@@ -101,3 +101,10 @@ FROM Customers JOIN Orders USING(customer_id)
 GROUP BY customer_id
     HAVING SUM(IF(LEFT(order_date, 7) = '2020-06', quantity, 0) * price) >= 100
     AND SUM(IF(LEFT(order_date, 7) = '2020-07', quantity, 0) * price) >= 100
+    
+    
+    
+    LEFT(order_date, 7) = '2020-06' ––> check if the order date is in June 2020, return True/1 or False/0
+IF(LEFT(order_date, 7) = '2020-06', quantity, 0) ––> if the order date is in June 2020, return the value of quantity feature, else return 0
+SUM(IF(LEFT(order_date, 7) = '2020-06', quantity, 0) * price) ––> sum all the money the customer has spent by SUM(quantity * price)
+HAVING SUM(IF(LEFT(order_date, 7) = '2020-06', quantity, 0) * price) >= 100 ––> check if the total money is greater than $100
